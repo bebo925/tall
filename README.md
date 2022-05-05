@@ -7,7 +7,7 @@ TALL Stack Preset
 You can install the package via composer:
 
 ```bash
-composer require bebo925/tall
+composer require bebo925/tall //includes https://github.com/wire-elements/modal
 php artisan tall:install //this will create insall all of your JS dependencies, create a tailwind.config.js, update your webpack.mix.js file, and create an app.blade.php layout file
 ```
 
@@ -63,7 +63,6 @@ php artisan vendor:publish --tag="tall-views"
 ## Credits
 
 -   [Ryan McQuerry](https://github.com/bebo925)
--   [All Contributors](../../contributors)
 
 ## License
 
