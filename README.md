@@ -7,7 +7,7 @@ TALL Stack Preset
 You can install the package via composer:
 
 ```bash
-composer require Fayette-County-Public-Schools/tall
+composer require bebo925/tall
 php artisan tall:install
 ```
 
