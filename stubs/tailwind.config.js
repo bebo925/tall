@@ -33,8 +33,7 @@ module.exports = {
             colors: {
                 primary: colors.indigo,
                 secondary: colors.gray,
-                positive: colors.emerald,
-                negative: colors.red,
+                danger: colors.red,
                 warning: colors.amber,
                 info: colors.blue,
             },
