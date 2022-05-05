@@ -1,5 +1,3 @@
 <?php
-// config for FCPS/Tall
-return [
-
-];
+// config for Tall
+return [];

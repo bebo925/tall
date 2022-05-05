@@ -1,5 +1,5 @@
 <?php
 
-use FCPS\Tall\Tests\TestCase;
+use Tall\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);

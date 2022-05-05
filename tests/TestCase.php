@@ -1,10 +1,10 @@
 <?php
 
-namespace FCPS\Tall\Tests;
+namespace Tall\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use FCPS\Tall\TallServiceProvider;
+use Tall\TallServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -13,7 +13,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'FCPS\\Tall\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Tall\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 

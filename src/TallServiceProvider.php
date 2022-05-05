@@ -1,8 +1,8 @@
 <?php
 
-namespace FCPS\Tall;
+namespace Tall;
 
-use FCPS\Tall\Commands\TallCommand;
+use Tall\Commands\TallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 

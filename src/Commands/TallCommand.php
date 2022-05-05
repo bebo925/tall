@@ -1,6 +1,6 @@
 <?php
 
-namespace FCPS\Tall\Commands;
+namespace Tall\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;

@@ -33,13 +33,13 @@
     },
     "autoload": {
         "psr-4": {
-            "FCPS\\Tall\\": "src",
-            "FCPS\\Tall\\Database\\Factories\\": "database/factories"
+            "Tall\\": "src",
+            "Tall\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "FCPS\\Tall\\Tests\\": "tests"
+            "Tall\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -56,10 +56,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "FCPS\\Tall\\TallServiceProvider"
+                "Tall\\TallServiceProvider"
             ],
             "aliases": {
-                "Tall": "FCPS\\Tall\\Facades\\Tall"
+                "Tall": "Tall\\Facades\\Tall"
             }
         }
     },

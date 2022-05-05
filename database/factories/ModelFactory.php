@@ -1,6 +1,6 @@
 <?php
 
-namespace FCPS\Tall\Database\Factories;
+namespace Tall\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
