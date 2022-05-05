@@ -8,7 +8,7 @@ module.exports = {
         "./resources/**/*.php",
         "./vendor/wire-elements/modal/resources/views/**/*.php",
         "./vendor/livewire/livewire/src/views/**/*.php",
-        "./vendor/fcps/tall/resources/views/**/*.php",
+        "./vendor/bebo925/tall/resources/views/**/*.php",
         "./vendor/livewire-ui/modal/resources/views/*.blade.php",
         "./storage/framework/views/*.php",
     ],
@@ -40,5 +40,4 @@ module.exports = {
             },
         },
     },
-    plugins: [],
 };
