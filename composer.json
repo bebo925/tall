@@ -1,0 +1,68 @@
+{
+    "name": "bebo925/tall",
+    "description": "This is my package tall",
+    "keywords": [
+        "livewire",
+        "alpine",
+        "laravel",
+        "tall"
+    ],
+    "homepage": "https://github.com/bebo925/tall",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryan McQuerry",
+            "email": "ryan.mcquerry@fayette.kyschools.us",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/contracts": "^9.0",
+        "livewire/livewire": "^2.10",
+        "spatie/laravel-package-tools": "^1.9.2",
+        "wire-elements/modal": "^1.0"
+    },
+    "require-dev": {
+        "nunomaduro/collision": "^6.0",
+        "orchestra/testbench": "^7.0",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpunit/phpunit": "^9.5",
+        "spatie/laravel-ray": "^1.26"
+    },
+    "autoload": {
+        "psr-4": {
+            "FCPS\\Tall\\": "src",
+            "FCPS\\Tall\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FCPS\\Tall\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "FCPS\\Tall\\TallServiceProvider"
+            ],
+            "aliases": {
+                "Tall": "FCPS\\Tall\\Facades\\Tall"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
