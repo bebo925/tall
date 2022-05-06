@@ -9,8 +9,8 @@ $defaultAttributes = [
 ];
 
 $attributes->has('href')
-? $defaultAttributes['type'] = 'button'
-: $defaultAttributes['href'] = $attributes->only('href');
+?$defaultAttributes['href'] = $attributes->only('href')
+:$defaultAttributes['type'] = 'button' ;
 
 $defaultAttributes['class'] = match ($style) {
 'default' => 'focus:outline-none inline-flex justify-center items-center transition-all ease-in duration-100 focus:ring-2 focus:ring-offset-2 hover:shadow-sm disabled:opacity-80 disabled:cursor-not-allowed rounded gap-x-2 text-sm px-4 py-2 border text-slate-500 hover:bg-slate-100 ring-slate-200 bg-white',
