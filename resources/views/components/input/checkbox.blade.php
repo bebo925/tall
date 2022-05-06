@@ -13,6 +13,7 @@
         <label for="{{$id}}" class="block text-sm font-medium text-secondary-700 ml-2">{{$label}}</label>
         @endif
     </label>
-
+    @if($error)
     <x-tall::input.error :name="$error"></x-tall::input.error>
+    @endif
 </div>
