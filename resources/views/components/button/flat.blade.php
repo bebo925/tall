@@ -3,6 +3,14 @@
 @php
 $tag = $attributes->has('href') ? 'a' : 'button';
 
+$sizes = [
+'xs' => 'gap-x-1 text-xs px-2.5 py-1.5',
+'sm' => 'gap-x-2 text-xs leading-4 px-3 py-2',
+null => 'gap-x-2 text-sm px-4 py-2',
+'lg' => 'gap-x-2 text-base px-6 py-3',
+'xl' => 'gap-x-3 text-lg px-7 py-4'
+];
+
 $defaultAttributes = [
 'wire:loading.attr' => 'disabled',
 'wire:loading.class' => '!cursor-wait',
@@ -21,7 +29,7 @@ $defaultAttributes['class'] = match ($style) {
 };
 @endphp
 
-<{{ $tag }} {{ $attributes->merge($defaultAttributes) }}>
+<{{ $tag }} {{ $attributes->class([$sizes[$size]])->merge($defaultAttributes) }}>
     {{$slot}}
 
     @if ($attributes->has('wire:click'))

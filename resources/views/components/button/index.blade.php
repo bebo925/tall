@@ -1,7 +1,15 @@
-@props(['style' => 'default'])
+@props(['style' => 'default', 'size'=> null])
 
 @php
 $tag = $attributes->has('href') ? 'a' : 'button';
+
+$sizes = [
+'xs' => 'gap-x-1 text-xs px-2.5 py-1.5',
+'sm' => 'gap-x-2 text-xs leading-4 px-3 py-2',
+null => 'gap-x-2 text-sm px-4 py-2',
+'lg' => 'gap-x-2 text-base px-6 py-3',
+'xl' => 'gap-x-3 text-lg px-7 py-4'
+];
 
 $defaultAttributes = [
 'wire:loading.attr' => 'disabled',
@@ -13,15 +21,15 @@ $attributes->has('href')
 :$defaultAttributes['type'] = 'button' ;
 
 $defaultAttributes['class'] = match ($style) {
-'default' => 'focus:outline-none inline-flex justify-center items-center transition-all ease-in duration-100 focus:ring-2 focus:ring-offset-2 hover:shadow-sm disabled:opacity-80 disabled:cursor-not-allowed rounded gap-x-2 text-sm px-4 py-2 border text-slate-500 hover:bg-slate-100 ring-slate-200 bg-white',
-'primary' => 'focus:outline-none inline-flex justify-center items-center transition-all ease-in duration-100 focus:ring-2 focus:ring-offset-2 hover:shadow-sm disabled:opacity-80 disabled:cursor-not-allowed rounded gap-x-2 text-sm px-4 py-2 ring-primary-500 text-white bg-primary-500 hover:bg-primary-600 hover:ring-primary-600',
-'secondary' => 'focus:outline-none inline-flex justify-center items-center transition-all ease-in duration-100 focus:ring-2 focus:ring-offset-2 hover:shadow-sm disabled:opacity-80 disabled:cursor-not-allowed rounded gap-x-2 text-sm px-4 py-2 ring-secondary-500 text-white bg-secondary-500 hover:bg-secondary-600 hover:ring-secondary-600',
-'warning' => 'focus:outline-none inline-flex justify-center items-center transition-all ease-in duration-100 focus:ring-2 focus:ring-offset-2 hover:shadow-sm disabled:opacity-80 disabled:cursor-not-allowed rounded gap-x-2 text-sm px-4 py-2 ring-warning-500 text-white bg-warning-500 hover:bg-warning-600 hover:ring-warning-600 dark:ring-offset-slate-800',
-'danger' => 'focus:outline-none inline-flex justify-center items-center transition-all ease-in duration-100 focus:ring-2 focus:ring-offset-2 hover:shadow-sm disabled:opacity-80 disabled:cursor-not-allowed rounded gap-x-2 text-sm px-4 py-2 ring-danger-500 text-white bg-danger-500 hover:bg-danger-600 hover:ring-danger-600 dark:ring-offset-slate-800',
+'default' => 'focus:outline-none inline-flex justify-center items-center transition-all ease-in duration-100 focus:ring-2 focus:ring-offset-2 hover:shadow-sm disabled:opacity-80 disabled:cursor-not-allowed rounded border text-slate-500 hover:bg-slate-100 ring-slate-200 bg-white',
+'primary' => 'focus:outline-none inline-flex justify-center items-center transition-all ease-in duration-100 focus:ring-2 focus:ring-offset-2 hover:shadow-sm disabled:opacity-80 disabled:cursor-not-allowed rounded ring-primary-500 text-white bg-primary-500 hover:bg-primary-600 hover:ring-primary-600',
+'secondary' => 'focus:outline-none inline-flex justify-center items-center transition-all ease-in duration-100 focus:ring-2 focus:ring-offset-2 hover:shadow-sm disabled:opacity-80 disabled:cursor-not-allowed rounded ring-secondary-500 text-white bg-secondary-500 hover:bg-secondary-600 hover:ring-secondary-600',
+'warning' => 'focus:outline-none inline-flex justify-center items-center transition-all ease-in duration-100 focus:ring-2 focus:ring-offset-2 hover:shadow-sm disabled:opacity-80 disabled:cursor-not-allowed rounded ring-warning-500 text-white bg-warning-500 hover:bg-warning-600 hover:ring-warning-600 dark:ring-offset-slate-800',
+'danger' => 'focus:outline-none inline-flex justify-center items-center transition-all ease-in duration-100 focus:ring-2 focus:ring-offset-2 hover:shadow-sm disabled:opacity-80 disabled:cursor-not-allowed rounded ring-danger-500 text-white bg-danger-500 hover:bg-danger-600 hover:ring-danger-600 dark:ring-offset-slate-800',
 };
 @endphp
 
-<{{ $tag }} {{ $attributes->merge($defaultAttributes) }}>
+<{{ $tag }} {{ $attributes->class([$sizes[$size]])->merge($defaultAttributes) }}>
     {{$slot}}
 
     @if ($attributes->has('wire:click'))
