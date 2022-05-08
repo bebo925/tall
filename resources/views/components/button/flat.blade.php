@@ -1,4 +1,4 @@
-@props(['style' => 'default'])
+@props(['style' => 'default', 'size' => null])
 
 @php
 $tag = $attributes->has('href') ? 'a' : 'button';
