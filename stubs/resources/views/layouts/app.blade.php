@@ -36,7 +36,7 @@
         {{ $slot }}
         @endisset
 
-        <tall::messages />
+        <x-tall::messages :dark="true" />
         @livewire('livewire-ui-modal')
         @livewireScripts
     </body>
