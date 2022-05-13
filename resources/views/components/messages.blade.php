@@ -1,3 +1,4 @@
+@props(['dark' => false])
 <div x-data="{
         messages: [],
         remove(message) {
@@ -22,7 +23,7 @@
     }" @messages.window="windowEvent($event)" class="fixed inset-0 z-50 flex flex-col items-end justify-center px-4 py-6 space-y-4 pointer-events-none sm:p-6 sm:justify-start">
 
     <template x-for="(message, messageIndex) in messages" :key="messageIndex" hidden>
-        <div x-transition:enter="transform ease-out duration-300 transition" x-transition:enter-start="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2" x-transition:enter-end="translate-y-0 opacity-100 sm:translate-x-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="w-full max-w-sm bg-white rounded-lg shadow-lg pointer-events-auto">
+        <div x-transition:enter="transform ease-out duration-300 transition" x-transition:enter-start="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2" x-transition:enter-end="translate-y-0 opacity-100 sm:translate-x-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @class(['w-full max-w-sm rounded-lg shadow-lg pointer-events-auto'=> true, 'bg-white'=> !$dark, 'bg-gray-700'=> $dark])>
             <div class="overflow-hidden rounded-lg shadow-xs">
                 <div class="p-4">
                     <div class="flex items-start">
@@ -36,8 +37,8 @@
                             </svg>
                         </div>
                         <div class="ml-3 w-0 flex-1 pt-0.5">
-                            <p x-text="message.text" class="text-sm font-medium leading-5 text-gray-900"></p>
-                            <p x-text="message.body" class="text-xs text-gray-700"></p>
+                            <p x-text="message.text" @class(["text-sm font-medium leading-5", 'text-gray-900'=> !$dark, 'text-gray-100'=> $dark])></p>
+                            <p x-text="message.body" @class(["text-xs"=> true, 'text-gray-700'=> !$dark, 'text-gray-300'=> $dark])></p>
                         </div>
                         <div class="flex flex-shrink-0 ml-4">
                             <button @click="remove(message)" class="inline-flex text-gray-400 transition duration-150 ease-in-out focus:outline-none focus:text-gray-500">
