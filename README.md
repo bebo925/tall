@@ -50,6 +50,15 @@ php artisan vendor:publish --tag="tall-views"
         </x-tall::input.select>
     </x-tall::input>
 
+    <x-tall::panel title="The Title">
+        <x-slot name="body">
+        The body
+        </x-slot>
+        <x-slot name="footer">
+        //some buttons
+        </x-slot>
+    </x-tall::panel.body>
+
     <x-tall::messages></x-tall::messages>//exists on layouts/app.blade.php for notification messages
     //session()->flash('message', ['type' => 'success', 'message' => 'This is a success message!']);
     //You can also use Livewire's dispatchBrowserEvent
