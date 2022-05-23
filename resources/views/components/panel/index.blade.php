@@ -13,11 +13,11 @@
     </div>
     @endif
 
-    @if($body)
+    @isset($body)
     <div {{$body->attributes->class(['px-3 py-5 sm:p-10'])}}>
         {{$body}}
     </div>
-    @endif
+    @endisset
 
     {{$slot}}
 
