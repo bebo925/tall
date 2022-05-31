@@ -11,7 +11,7 @@
         </div>
         @endif
     </div>
-    <div class="mt-5 flex lg:mt-0 lg:ml-4">
+    <div {{$actions->attributes()->class(['mt-5 flex lg:mt-0 lg:ml-4'])}}>
         {{$actions ?? ''}}
     </div>
 </div>
