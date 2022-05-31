@@ -21,8 +21,8 @@ php artisan vendor:publish --tag="tall-views"
 
 ```php
     <x-tall::button style="primary">My Button</x-tall::button>
-    //styles: default, primary, secondary, warning
-    //types: button.flat, button.circle
+    //styles: default, primary, secondary, warning, danger
+    //types: button.flat, button.circle, button.outline
 
     <x-tall::input label="My form element" error="property_name">
         <x-tall::input.text />
@@ -59,7 +59,14 @@ php artisan vendor:publish --tag="tall-views"
         </x-slot>
     </x-tall::panel.body>
 
-    <x-tall::messages></x-tall::messages>//exists on layouts/app.blade.php for notification messages
+    <x-tall::page-heading title="Page Title">
+        <x-slot name="meta">
+        </x-slot>
+        <x-slot name="actions">
+        </x-slot>
+    </x-tall::page-heading>
+
+    <x-tall::messages dark="true"></x-tall::messages>//exists on layouts/app.blade.php for notification messages
     //session()->flash('message', ['type' => 'success', 'message' => 'This is a success message!']);
     //You can also use Livewire's dispatchBrowserEvent
 
@@ -67,6 +74,19 @@ php artisan vendor:publish --tag="tall-views"
     <x-tall::modal>
     //slots: title, actions
     </x-tall::modal>
+
+    <x-tall::table>
+        <x-slot name="head">
+         <x-tall::table.heading>Some Heading</x-tall::table.heading>
+        </x-slot>
+        <x-slot name="body">
+         <x-tall::table.row>
+            <x-tall::table.cell>
+            Some cell
+            </x-tall::table.cell>
+         </x-tall::table.row>
+        </x-slot>
+    </x-tall::table>
 ```
 
 ## Credits
