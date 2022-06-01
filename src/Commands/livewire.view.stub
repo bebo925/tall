@@ -1,0 +1,32 @@
+<x-app>
+    <x-tall::page-heading title="[class]">
+        <x-slot name="actions">
+        </x-slot>
+    </x-tall::page-heading>
+
+    <div class="inline-flex gap-2">
+        <x-tall::input.text wire:model.debounce="search" type="search" placeholder="Filter" class="w-64">
+            <x-slot name="prefix">
+                <x-icon name="heroicon-o-search" class="w-4 h-4 text-gray-400"></x-icon>
+            </x-slot>
+        </x-tall::input.text>
+    </div>
+
+    <x-tall::table>
+        <x-slot name="head">
+            <x-tall::table.heading></x-tall::table.heading>
+        </x-slot>
+
+        <x-slot name="body">
+            @foreach ($this->[class]s as $[class])
+            <x-tall::table.row wire:key="-{{$[class]->id}}" onclick="window.location.href='{{route('', ['[class]' => $[class]->id])}}'">
+                <x-tall::table.cell></x-tall::table.cell>
+            </x-tall::table.row>
+            @endforeach
+        </x-slot>
+    </x-tall::table>
+
+    <div class="py-5 px-3">
+        {{$this->[class]->links()}}
+    </div>
+</x-app>

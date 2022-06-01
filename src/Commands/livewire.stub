@@ -1,0 +1,28 @@
+<?php
+
+namespace [namespace];
+
+use Livewire\Component;
+
+class [class] extends Component
+{
+    public $search;
+
+    protected $queryString = ['search'];
+
+    public function mount()
+    {
+    }
+
+    public function get[class]sProperty()
+    {
+        return [class]::query()
+            ->when(!empty($this->search), fn ($query) => $query->search($this->search))
+            ->paginate(25);
+    }
+
+    public function render()
+    {
+        return view('[view]');
+    }
+}

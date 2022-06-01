@@ -5,6 +5,7 @@ namespace Tall;
 use Tall\Commands\TallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Tall\Commands\PublishTallStubs;
 
 class TallServiceProvider extends PackageServiceProvider
 {
@@ -19,7 +20,7 @@ class TallServiceProvider extends PackageServiceProvider
             ->name('tall')
             ->hasConfigFile()
             ->hasViews()
-            ->hasCommand(TallCommand::class);
+            ->hasCommands([TallCommand::class, PublishTallStubs::class]);
 
         \Illuminate\Support\Facades\Blade::anonymousComponentNamespace('components', 'tall');
     }
