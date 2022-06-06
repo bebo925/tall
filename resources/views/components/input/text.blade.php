@@ -19,7 +19,7 @@
     @endisset
 
     @if ($attributes->has('wire:target'))
-    <div wire:loading {{$attributes->wire('target')}} class="absolute inset-y-0 right-0 pr-2.5 flex items-center pointer-events-none text-secondary-400">
+    <div wire:loading.flex {{$attributes->wire('target')}} class="absolute inset-y-0 right-0 pr-2.5 flex items-center pointer-events-none text-secondary-400">
         <span class="pr-1 flex items-center justify-center">
             <svg class="animate-spin shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
