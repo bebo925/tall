@@ -11,6 +11,8 @@ composer require bebo925/tall //includes https://github.com/wire-elements/modal
 php artisan tall:install //this will create insall all of your JS dependencies, create a tailwind.config.js, update your webpack.mix.js file, and create an app.blade.php layout file
 ```
 
+You will need to edit the host variable in 'vite.config.js' file for hot reloading to work.
+
 Optionally, you can publish the views using
 
 ```bash
