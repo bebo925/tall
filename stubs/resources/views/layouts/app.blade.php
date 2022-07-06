@@ -17,16 +17,16 @@
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ url(mix('css/app.css')) }}">
         @stack('styles')
         @livewireStyles
 
         <!-- Scripts -->
-        <script src="{{ url(mix('js/app.js')) }}" defer></script>
         @stack('scripts')
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
 
     <body class="bg-gray-100">
