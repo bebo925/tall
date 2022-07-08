@@ -1,6 +1,6 @@
 @props(['label' => '', 'hint' => null, 'disabled' => false, 'name' => random_bytes(20), 'error' => null])
 
-<div class="@if($disabled) opacity-60 @endif">
+<div class="{{$attributes->get('class')}} @if($disabled) opacity-60 @endif">
     @if ($label)
     <div class="flex mb-1">
         @if ($label)
