@@ -98,6 +98,13 @@ php artisan vendor:publish --tag="tall-views"
             'style' => 'danger',
             'event' = 'someEventToListenFor'
         ]);
+
+          <livewire:tall-markdown-x :content="$application->faq ?? ''" :style="[
+                                 'toolbar'=> 'flex items-center justify-between',
+                                'textarea' => 'h-[60vh] focus:outline-none p-4 w-full',
+                                'preview' => 'p-10',
+                                'help' => 'p-8 prose max-w-none'
+                                ]" />
 ```
 
 ## Credits
