@@ -2,6 +2,7 @@
 
 namespace Tall;
 
+use Tall\MarkdownX;
 use Livewire\Livewire;
 use Tall\ConfirmationDialog;
 use Tall\Commands\TallCommand;
@@ -20,7 +21,7 @@ class TallServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('tall')
-            ->hasConfigFile()
+            ->hasConfigFile(['tall', 'markdownx'])
             ->hasViews()
             ->hasCommands([TallCommand::class, PublishTallStubs::class]);
 
@@ -30,5 +31,6 @@ class TallServiceProvider extends PackageServiceProvider
     public function bootingPackage(): void
     {
         Livewire::component('tall-confirmation-dialog', ConfirmationDialog::class);
+        Livewire::component('tall-markdown-x', MarkdownX::class);
     }
 }
