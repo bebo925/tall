@@ -99,12 +99,22 @@ php artisan vendor:publish --tag="tall-views"
             'event' = 'someEventToListenFor'
         ]);
 
-          <livewire:tall-markdown-x :content="$application->faq ?? ''" :style="[
-                                 'toolbar'=> 'flex items-center justify-between',
-                                'textarea' => 'h-[60vh] focus:outline-none p-4 w-full',
-                                'preview' => 'p-10',
-                                'help' => 'p-8 prose max-w-none'
-                                ]" />
+    <livewire:tall-markdown-x :content="$application->faq ?? ''" :style="[
+        'toolbar'=> 'flex items-center justify-between',
+        'textarea' => 'h-[60vh] focus:outline-none p-4 w-full',
+        'preview' => 'p-10',
+        'help' => 'p-8 prose max-w-none'
+        ]" />
+
+        <x-tall::dropdown>
+            <x-slot name="trigger">
+                button
+            </x-slot>
+
+            <x-tall::dropdown.item>
+                item
+            </x-tall::dropdown.item>
+        </x-tall::dropdown>
 ```
 
 ## Credits
