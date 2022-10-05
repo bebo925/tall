@@ -89,6 +89,15 @@ php artisan vendor:publish --tag="tall-views"
          </x-tall::table.row>
         </x-slot>
     </x-tall::table>
+
+    $emit('openDialog', 'tall-confirmation-dialog', [
+            'message' => 'Are you sure you want to delete?',
+            'title' => 'Warning',
+            'data' => $someId,
+            'confirmText' => 'Delete',
+            'style' => 'danger',
+            'event' = 'someEventToListenFor'
+        ]);
 ```
 
 ## Credits

@@ -2,10 +2,12 @@
 
 namespace Tall;
 
+use Livewire\Livewire;
+use Tall\ConfirmationDialog;
 use Tall\Commands\TallCommand;
+use Tall\Commands\PublishTallStubs;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Tall\Commands\PublishTallStubs;
 
 class TallServiceProvider extends PackageServiceProvider
 {
@@ -23,5 +25,10 @@ class TallServiceProvider extends PackageServiceProvider
             ->hasCommands([TallCommand::class, PublishTallStubs::class]);
 
         \Illuminate\Support\Facades\Blade::anonymousComponentNamespace('components', 'tall');
+    }
+
+    public function bootingPackage(): void
+    {
+        Livewire::component('tall-confirmation-dialog', ConfirmationDialog::class);
     }
 }
