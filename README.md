@@ -115,6 +115,8 @@ php artisan vendor:publish --tag="tall-views"
                 item
             </x-tall::dropdown.item>
         </x-tall::dropdown>
+
+        <x-tall::multiple-select :options="MyModel::all()" wire:model.defer="selected"></x-tall::multiple-select>//valueField=id, labelField=name
 ```
 
 ## Credits
