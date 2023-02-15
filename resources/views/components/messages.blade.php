@@ -11,9 +11,9 @@
         },
         init()
         {
-            if(@js(session()->has('message')))
+            if(@js(session()->has('messages')))
             {
-                this.addMessage(@js(session('message')));
+                this.addMessage(@js(session('messages')));
             }
         },
         windowEvent(event)

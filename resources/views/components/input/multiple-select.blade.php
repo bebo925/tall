@@ -40,7 +40,7 @@
     remove(option){
         this.selectedOptions = this.selectedOptions.filter((item) => item !== option)
     }
-}" x-cloak class="relative" x-on:click.outside="open = false" wire:ignore>
+}" x-cloak x-on:click.outside="open = false" wire:ignore {{$attributes->class(['relative'])}}>
     <div x-ref="button" x-on:click="toggle()" :aria-expanded="open" {{$attributes->class(['flex flex-wrap w-full gap-2 pl-3 pr-10 py-2 text-base sm:text-sm shadow-sm rounded-md border bg-white focus:ring-1 focus:outline-none border-secondary-300 focus:ring-primary-500 focus:border-primary-500 relative'])}}>
         <template x-for="item in selectedOptions" :key="'selected-options'+item.{{$valueField}}">
             <div class="px-2 py-1 bg-gray-200 rounded text-xs flex items-center shadow">
