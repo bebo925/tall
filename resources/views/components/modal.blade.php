@@ -1,5 +1,5 @@
 @props(['showClose' => true])
-<div class="relative">
+<div {{$attributes->merge(['class' => 'relative'])}}>
     @if($showClose)
     <button type="button" wire:click="$emit('closeModal')" class="absolute p-2 text-gray-500 rounded-full cursor-pointer ring-0 focus:ring-0 top-3 right-3 hover:bg-gray-200 hover:text-gray-700 focus:outline-none">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -19,7 +19,7 @@
     </div>
 
     @if(!empty($actions))
-    <div class="flex items-end justify-end px-8 py-4 space-x-2 mb-3">
+    <div class="flex items-end justify-end px-8 py-4 space-x-2">
         {{$actions}}
     </div>
     @endif
