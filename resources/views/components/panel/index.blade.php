@@ -1,5 +1,5 @@
 @props(['title' => null])
-<div class="bg-white overflow-hidden shadow rounded-lg">
+<div class="bg-white shadow rounded-lg">
     @if($title)
     <div {{$attributes->class(['flex items-center justify-between flex-wrap sm:flex-nowrap px-3 sm:px-6 pt-3 sm:pt-6'])}} >
         <div class="">
