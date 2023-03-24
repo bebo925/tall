@@ -17,5 +17,7 @@
     </label>
     @endif
 
+    @if(!is_null($error))
     <x-tall::input.error :name="$error"></x-tall::input.error>
+    @endif
 </div>
