@@ -90,14 +90,14 @@ php artisan vendor:publish --tag="tall-views"
         </x-slot>
     </x-tall::table>
 
-    $emit('openDialog', 'tall-confirmation-dialog', [
+    $dispatch('openModal', {component: 'tall-confirmation-dialog', arguments: [
             'message' => 'Are you sure you want to delete?',
             'title' => 'Warning',
             'data' => $someId,
             'confirmText' => 'Delete',
             'style' => 'danger',
             'event' = 'someEventToListenFor'
-        ]);
+        ]});
 
     <livewire:tall-markdown-x :content="$application->faq ?? ''" :style="[
         'toolbar'=> 'flex items-center justify-between',

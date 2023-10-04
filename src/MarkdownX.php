@@ -5,12 +5,12 @@ namespace Tall;
 use Exception;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use Livewire\Attributes\On;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 
 class MarkdownX extends Component
 {
-
     public $content;
     public $contentPreview;
     public $name;
@@ -23,11 +23,6 @@ class MarkdownX extends Component
      *
      * 'markdown-x-image-upload' => uploads image files from the editor
      */
-    protected $listeners = [
-        'markdown-x-image-upload' => 'upload',
-        'markdown-x-giphy-load' => 'getGiphyTrendingImages',
-        'markdown-x-giphy-search' => 'getGiphySearchImages'
-    ];
 
     /**
      * Mount the MarkdownX component, you can pass the current content, the name for the textarea field,
@@ -97,6 +92,7 @@ class MarkdownX extends Component
      * @param array $payload
      * @return void
      */
+    #[On('markdown-x-image-upload')]
     public function upload($payload)
     {
 
@@ -169,6 +165,7 @@ class MarkdownX extends Component
         }
     }
 
+    #[On('markdown-x-giphy-load')]
     public function getGiphyTrendingImages($payload)
     {
         $api_key = config('markdownx.integrations.giphy.api_key');
@@ -184,6 +181,7 @@ class MarkdownX extends Component
         }
     }
 
+    #[On('markdown-x-giphy-search')]
     public function getGiphySearchImages($payload)
     {
         $api_key = config('markdownx.integrations.giphy.api_key');

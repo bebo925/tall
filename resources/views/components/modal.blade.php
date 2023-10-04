@@ -1,7 +1,7 @@
 @props(['showClose' => true])
 <div {{$attributes->merge(['class' => 'relative'])}}>
     @if($showClose)
-    <button type="button" wire:click="$emit('closeModal')" class="absolute p-2 text-secondary-500 rounded-full cursor-pointer ring-0 focus:ring-0 top-3 right-3 hover:bg-secondary-200 hover:text-secondary-700 focus:outline-none">
+    <button type="button" wire:click="$dispatch('closeModal')" class="absolute p-2 text-secondary-500 rounded-full cursor-pointer ring-0 focus:ring-0 top-3 right-3 hover:bg-secondary-200 hover:text-secondary-700 focus:outline-none">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
