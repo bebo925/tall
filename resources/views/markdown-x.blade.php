@@ -1,190 +1,189 @@
-<div class="relative">
-    <div x-data="markdown()" x-ref="markdownX" data-key="{{ $key }}" id="markdown-{{ $key }}" class="relative w-full" x-init="init()">
-        {{-- MarkdownX Toolbar --}}
-        <div id="markdownx-insert-{{ $key }}" :data-insert="editStart"></div>
-        <div class="@if(isset($style['toolbar'])){{ $style['toolbar'] }}@else{{ 'relative flex items-center justify-between w-full h-12 overflow-x-hidden bg-gray-50 sm:h-10' }}@endif">
-            <div class="flex items-center h-12 sm:h-10">
-                <div class="flex items-center h-full px-4 font-medium text-gray-600 cursor-pointer hover:bg-gray-100 dark-hover:bg-dark-950" @click="section = 'write'" x-bind:class="{ 'text-blue-500 border-b border-blue-500' : section == 'write' }">
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-4 h-4 mr-2">
-                        <path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                    </svg>
-                    <span>Write</span>
-                </div>
-                <div wire:click="updateContentPreview()" class="flex items-center h-full px-4 font-medium text-gray-600 cursor-pointer hover:bg-gray-100 dark-hover:bg-dark-950" @click="section = 'preview'" x-bind:class="{ 'text-blue-500 border-b border-blue-500' : section == 'preview' }">
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-4 h-4 mr-2">
-                        <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                    </svg>
-                    <span>Preview</span>
-                </div>
-                <div class="flex items-center h-full px-4 font-medium text-gray-600 cursor-pointer hover:bg-gray-100 dark-hover:bg-dark-950" @click="section = 'help'" x-bind:class="{ 'text-blue-500 border-b border-blue-500' : section == 'help' }">
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-4 h-4 mr-2">
-                        <path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    <span>Help</span>
-                </div>
-            </div>
-            <div class="relative flex items-center h-full px-4 font-medium text-gray-600 cursor-pointer hover:bg-gray-100 dark-hover:bg-dark-950">
-                <input type="file" x-on:change="upload(event, '{{ $key }}')" x-ref="image" id="image-{{ $key }}" class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer" tabindex="-1">
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6 cursor-pointer">
-                    <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" class="cursor-pointer"></path>
+<div x-data="markdown()" x-ref="markdownX" data-key="{{ $key }}" id="markdown-{{ $key }}" class="relative w-full" x-init="init()">
+    {{-- MarkdownX Toolbar --}}
+    <div id="markdownx-insert-{{ $key }}" :data-insert="editStart"></div>
+    <div class="@if(isset($style['toolbar'])){{ $style['toolbar'] }}@else{{ 'relative flex items-center justify-between w-full h-12 overflow-x-hidden bg-gray-50 sm:h-10' }}@endif">
+        <div class="flex items-center h-12 sm:h-10">
+            <div class="flex items-center h-full px-4 font-medium text-gray-600 cursor-pointer hover:bg-gray-100 dark-hover:bg-dark-950" @click="section = 'write'" x-bind:class="{ 'text-blue-500 border-b border-blue-500' : section == 'write' }">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-4 h-4 mr-2">
+                    <path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                 </svg>
+                <span>Write</span>
+            </div>
+            <div wire:click="updateContentPreview()" class="flex items-center h-full px-4 font-medium text-gray-600 cursor-pointer hover:bg-gray-100 dark-hover:bg-dark-950" @click="section = 'preview'" x-bind:class="{ 'text-blue-500 border-b border-blue-500' : section == 'preview' }">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-4 h-4 mr-2">
+                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                </svg>
+                <span>Preview</span>
+            </div>
+            <div class="flex items-center h-full px-4 font-medium text-gray-600 cursor-pointer hover:bg-gray-100 dark-hover:bg-dark-950" @click="section = 'help'" x-bind:class="{ 'text-blue-500 border-b border-blue-500' : section == 'help' }">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-4 h-4 mr-2">
+                    <path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span>Help</span>
             </div>
         </div>
-
-        {{-- MarkdownX Editor --}}
-        <div class="relative " x-show="section == 'write'">
-            <div x-ref="error" id="error-{{ $key }}" class="absolute top-0 z-40 hidden w-full py-2 text-sm text-center text-red-400 bg-red-50"></div>
-            <div x-ref="editorModal" x-show="popup" x-ref="popup" x-on:keydown.escape="cancelModal(); popup=false" x-on:click.away="popup=false" wire:ignore :class="{ 'translate-y-2 scale-100 transition-transform duration-100 ease-in-out': popup, 'translate-y-0 scale-95': !popup,  'max-w-sm' : popupType != 'code', 'max-w-4xl pr-10' : popupType == 'code' }" class="absolute z-40 w-full max-w-sm transform rounded-lg shadow-sm" x-cloak>
-                <div class="absolute left-0 w-4 h-4 -mt-2 ml-3.5 transform rotate-45 bg-white border-t border-l border-gray-200 rounded-tl-sm"></div>
-                <div class="overflow-hidden border border-gray-200 rounded-lg">
-                    <div class="px-5 py-4 bg-white">
-                        <div x-ref="editorModalContent"></div>
-                    </div>
-                    <div class="px-5 py-3 bg-gray-100 sm:flex sm:flex-row-reverse">
-                        <span class="flex w-full rounded-md sm:ml-3 sm:w-auto">
-                            <button id="modalClose" @click="cancelModal(); popup = false;" type="button" class="inline-flex justify-center w-full px-4 py-2 mr-2 text-base font-medium leading-6 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline sm:text-sm sm:leading-5">Cancel</button>
-                            <button type="button" x-ref="modalExecute" id="modal-execute-{{ $key }}" @click="executeAssociatedFunction()" data-suggestion="" @click="popup = false" class="inline-flex justify-center w-full px-4 py-2 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-blue-500 border-blue-500 rounded-md shadow-sm text-whit hover:border-blue-600 hover:bg-blue-600 focus:outline-none focus:border-blue-300 focus:shadow-outline sm:text-sm sm:leading-5">Insert</button>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div id="dropdown-{{ $key }}" x-ref="dropdown" @click="clickItem($event)" wire:ignore class="relative z-40"></div>
-            <div wire:ignore x-show="debug" @click="$refs.editor.focus()" :class="{ 'w-full h-full bg-red-100 bg-opacity-50' : debuggerOpen, 'w-0 h-auto' : !debuggerOpen }" class="absolute z-40 cursor-text" x-cloak>
-                <div x-show="debuggerOpen" x-ref="debugger" class="w-full opacity-75" x-cloak></div>
-                <div x-ref="debugButton" class="relative opacity-0">
-                    <div @click="debuggerOpen=!debuggerOpen" :class="{ 'text-gray-400 bg-gray-50 hover:text-gray-500' : !debuggerOpen, 'text-red-400 hover:text-red-500 bg-red-50' : debuggerOpen }" class="absolute top-0 flex items-center justify-center rounded-sm cursor-pointer -ml-9 group w-9 h-9">
-                        <svg x-show="debuggerOpen" class="w-5 h-5 transform rotate-90 stroke-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M0 0h24v24H0z" stroke="none" />
-                            <path d="M9 9V8a3 3 0 016 0v1M8 9h8a6 6 0 011 3v3a5 5 0 01-10 0v-3a6 6 0 011-3M3 13h4M17 13h4M12 20v-6M4 19l3.35-2M20 19l-3.35-2M4 7l3.75 2.4M20 7l-3.75 2.4" />
-                        </svg>
-                        <svg x-show="!debuggerOpen" x-transition:enter-start="rotate-90" x-transition:enter-end="rotate-0" class="w-5 h-5 transition-all duration-500 ease-out transform stroke-current group-hover:rotate-90" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M0 0h24v24H0z" stroke="none" />
-                            <path d="M9 9V8a3 3 0 016 0v1M8 9h8a6 6 0 011 3v3a5 5 0 01-10 0v-3a6 6 0 011-3M3 13h4M17 13h4M12 20v-6M4 19l3.35-2M20 19l-3.35-2M4 7l3.75 2.4M20 7l-3.75 2.4" />
-                        </svg>
-                    </div>
-                </div>
-                <div x-show="debuggerOpen" class="fixed bottom-0 right-0 px-3 py-2 bg-red-50">
-                    <div class="flex text-sm text-red-500">
-                        <span>Cursor Start:</span>
-                        <span class="mr-2" x-text="currentCaretPos.start"></span>
-                        <span>Cursor End:</span>
-                        <span class="mr-2" x-text="currentCaretPos.end"></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="relative  overflow-hidden @if(isset($style['height'])){{ $style['height'] }}@endif">
-                <div wire:ignore x-ref="placeholder" @click="$refs.editor.focus()" id="placeholder-{{ $key }}" x-show="placeholder" class="absolute z-20 text-gray-400 transition-opacity duration-200 ease-out" x-cloak>Type '/' for commands </div>
-                <textarea x-ref="editor" id="editor-{{ $key }}" data-key="{{ $key }}" class="editors @if(isset($style['textarea'])){{ $style['textarea'] }}@else{{ 'w-full h-full mx-auto min-h-screen px-5 md:px-1 pt-5 font-mono leading-loose tracking-tighter border-0 outline-none focus:outline-none sm:x-0 text-lg text-gray-600' }}@endif" placeholder="" data-loaded="false" name="{{ $name }}" x-on:dragenter="$event.preventDefault(); dropFiles=true" wire:model.lazy="content" x-on:blur="@this.call('update', { content: $event.target.value });" x-on:focus="editorEvent($event)" x-on:keypress="editorEvent($event)" x-on:keydown="getCursorXY(); editorEvent($event)" x-on:keyup="getCursorXY(); editorEvent($event)" x-on:click="editorEvent($event)" x-cloak>
-                    </textarea>
-                <div x-ref="drop" x-show="dropFiles" x-on:dragleave="$event.preventDefault(); dropFiles=false" x-on:dragover="$event.preventDefault();" x-on:drop="$event.preventDefault(); droppingFile($event)" class="absolute inset-0 flex items-center justify-center w-full h-full bg-blue-100 bg-opacity-20" x-cloak>
-                    <div class="flex flex-col items-center justify-center w-40 h-32 text-xs text-gray-400 bg-white border-0 border-gray-200 border-dashed rounded-lg">
-                        <svg class="w-12 h-auto mb-3 fill-current" viewBox="0 0 98 97" xmlns="http://www.w3.org/2000/svg">
-                            <g fill-rule="nonzero">
-                                <path d="M63.48.16H2.76a2 2 0 00-2 2v60.73a2 2 0 002 2h23.59a2 2 0 100-4H4.78V4.22h56.66v21.57a2 2 0 104 0V2.17a2 2 0 00-2-2M95.35 89.08A1.91 1.91 0 0093.44 91v1.9h-1.9a1.91 1.91 0 000 3.81h3.81a1.91 1.91 0 001.9-1.9V91a1.91 1.91 0 00-1.9-1.9M77.55 92.88h-6.32a1.91 1.91 0 000 3.81h6.32a1.91 1.91 0 100-3.81M57.24 92.88h-6.32a1.91 1.91 0 100 3.81h6.32a1.91 1.91 0 000-3.81M38.19 92.88h-1.91V91a1.9 1.9 0 00-3.8 0v3.81a1.91 1.91 0 001.9 1.9h3.81a1.91 1.91 0 000-3.81" />
-                                <path d="M34.38 58.58a1.91 1.91 0 001.9-1.9v-6.32a1.9 1.9 0 00-3.8 0v6.32a1.89 1.89 0 001.9 1.9M32.48 77a1.9 1.9 0 003.8 0v-6.33a1.9 1.9 0 00-3.8 0V77zM38.19 31.92h-3.81a1.9 1.9 0 00-1.9 1.9v3.8a1.9 1.9 0 003.8 0v-1.9h1.91a1.91 1.91 0 001.9-1.9 1.89 1.89 0 00-1.9-1.9M57.24 31.92h-6.32a1.9 1.9 0 000 3.8h6.32a1.91 1.91 0 001.9-1.9 1.89 1.89 0 00-1.9-1.9M77.55 31.92h-6.32a1.9 1.9 0 000 3.8h6.32a1.9 1.9 0 000-3.8M95.35 31.92h-3.81a1.9 1.9 0 000 3.8h1.9v1.9a1.91 1.91 0 103.81 0v-3.8a1.91 1.91 0 00-1.9-1.9M95.35 68.74a1.9 1.9 0 00-1.91 1.9V77a1.91 1.91 0 103.81 0v-6.33a1.93 1.93 0 00-1.9-1.93M95.35 48.42a1.91 1.91 0 00-1.91 1.91v6.35a1.91 1.91 0 003.81 0v-6.32a1.93 1.93 0 00-1.9-1.94M81.41 62.81a1.29 1.29 0 01-.89 1.19l-10.33 3.65a3.26 3.26 0 00-2 2L64.57 80a1.29 1.29 0 01-1.23.89 1.34 1.34 0 01-1.26-.89L51.45 52.65a1.28 1.28 0 01.31-1.43 1.3 1.3 0 01.92-.39c.17.001.338.028.5.08l27.39 10.64a1.2 1.2 0 01.84 1.26" />
-                            </g>
-                        </svg>
-                        <span>Drop Files Here</span>
-                    </div>
-                </div>
-            </div>
+        <div class="relative flex items-center h-full px-4 font-medium text-gray-600 cursor-pointer hover:bg-gray-100 dark-hover:bg-dark-950">
+            <input type="file" x-on:change="upload(event, '{{ $key }}')" x-ref="image" id="image-{{ $key }}" class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer" tabindex="-1">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6 cursor-pointer">
+                <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" class="cursor-pointer"></path>
+            </svg>
         </div>
-
-        {{-- MarkdownX Preview Section --}}
-        <div x-show="section == 'preview'" wire:target="updateContentPreview" class="@if(isset($style['preview'])){{ $style['preview'] }}@else{{ 'h-full bg-white min-h-screen relative z-30 px-5 pt-5 prose md:prose-xl lg:prose-2xl max-w-none' }}@endif" x-cloak>
-            {!! $contentPreview !!}
-        </div>
-        {{-- End: MarkdownX Preview Section --}}
-
-        {{-- MarkdownX Help Section --}}
-        <div x-show="section == 'help'" class="@if(isset($style['help'])){{ $style['help'] }}@else{{ 'h-full bg-white min-h-screen px-5 pt-10 relative z-30 prose bg-white dark:bg-dark-900 md:prose-xl lg:prose-lg max-w-none' }}@endif" x-cloak>
-
-            <h2>Markdown Basics</h2>
-            <p>Below you will find some common used markdown syntax. For a deeper dive in Markdown check out this <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet" target="_blank">Cheat Sheet</a></p>
-            <hr>
-
-            <h3>Bold & Italic</h3>
-            <p><span class="mr-2 italic">Italics</span> <span class="p-1">*asterisks*</span><br><span class="mr-2 font-bold">Bold</span> <span class="p-1">**double asterisks**</span></p>
-            <hr>
-
-            <h3>Code</h3>
-            <p><span class="mr-2">Inline Code</span><br><span class="p-1 font-mono text-blue-500 bg-blue-100 rounded-md">`backtick`</span><span class="block mt-2 mr-2">Code Block</span><span class="block p-1 font-mono text-blue-600 bg-blue-100">```<br>Three back ticks and then enter your code blocks here.<br>```</span></p>
-            <hr>
-
-            <h3>Headers</h3>
-            <p># This is a Heading 1<br>## This is a Heading 2<br>### This is a Heading 3<br></p>
-            <hr>
-
-            <h3>Quotes</h3>
-            <blockquote> > type a greater than sign and start typing your quote.</blockquote>
-            <hr>
-
-            <h3>Links</h3>
-            <p>You can add <a href="#_">links</a> by adding text inside of <span class="p-1 font-mono text-blue-600 bg-blue-100">[]</span> and the link inside of <span class="p-1 font-mono text-blue-600 bg-blue-100">()</span>, like so:</p>
-            <div class="p-1 font-mono text-blue-600 bg-blue-100">[link_text](https://google.com)</div>
-            <hr>
-
-            <h3>Lists</h3>
-            <p>To add a numbered list you can simply start with a number and a <span class="p-1 font-mono text-blue-600 bg-blue-100">.</span>, like so:<br><span class="block p-1 pl-5 font-mono text-blue-600 bg-blue-100"> 1. The first item in my list</span></p>
-            <p>For an unordered list, you can add a dash <span class="p-1 font-mono text-blue-600 bg-blue-100">-</span>, like so:<br><span class="block p-1 pl-5 font-mono text-blue-600 bg-blue-100"> - The start of my list</span></p>
-            <hr>
-
-            <h3>Images</h3>
-            <p>You can add images by selecting the image icon, which will upload and add an image to the editor, or you can manually add the image by adding an exclamation <span class="p-1 font-mono text-blue-600 bg-blue-100">!</span>, followed by the alt text inside of <span class="p-1 font-mono text-blue-600 bg-blue-100">[]</span>, and the image URL inside of <span class="p-1 font-mono text-blue-600 bg-blue-100">()</span>, like so:</p>
-            <div class="p-1 font-mono text-blue-600 bg-blue-100">![alt text for image](url_to_image.png)</div>
-            <hr>
-
-            <h3>Dividers</h3>
-            <p>To add a divider you can add three dashes or three asterisks:<br><span class="block p-1 pl-5 font-mono text-blue-600 bg-blue-100">--- or ***</span>
-            </p>
-            <hr>
-
-            @if(in_array('giphy', config('markdownx.dropdown_items')))
-            <h3>Embedding GIFs via Giphy</h3>
-            <p>You can easily embed animated GIFS with the following syntax:<br><span class="p-1 font-mono text-blue-600 bg-blue-100">{% giphy https://giphy.com/embed/giphy_id %}</span></p>
-            <hr>
-            @endif
-
-            @if(in_array('codepen', config('markdownx.dropdown_items')))
-            <h3>Embedding Codepens</h3>
-            <p>You can also embed a codepen by writing the following:<br><span class="p-1 font-mono text-blue-600 bg-blue-100">{% codepen https://codepen.io/your/pen/url %}</span></p>
-            <p>You may also choose the default tabs you wish to show your pen by writing the <span class="p-1 font-mono text-blue-600 bg-blue-100">default-tab</span> like so: (default is result)</p>
-            <p><span class="p-1 font-mono text-blue-600 bg-blue-100">{% codepen https://codepen.io/your/pen/url default-tab=result,html %}</span></p>
-            <hr>
-            @endif
-
-            @if(in_array('codesandbox', config('markdownx.dropdown_items')))
-            <h3>Embedding CodeSandbox</h3>
-            <p>You can also embed CodeSandbox by writing the following:<br><span class="p-1 font-mono text-blue-600 bg-blue-100">{% codesandbox YOUR_CODESANDBOX_EMBED_URL %}</span></p>
-            <hr>
-            @endif
-
-            @if(in_array('gists', config('markdownx.dropdown_items')))
-            <h3>Embedding Gists</h3>
-            <p>You can also embed a Gists by writing the following:<br><span class="p-1 font-mono text-blue-600 bg-blue-100">{% gist GIST_ID_HERE %}</span></p>
-            <hr>
-            @endif
-
-            @if(in_array('youtube', config('markdownx.dropdown_items')))
-            <h3>Embedding YouTube Videos</h3>
-            <p>You can also embed a YouTube video by writing the following:<br><span class="p-1 font-mono text-blue-600 bg-blue-100">{% youtube VIDEO_ID_HERE %}</span></p>
-            <hr>
-            @endif
-
-            @if(in_array('buy_me_a_coffee', config('markdownx.dropdown_items')))
-            <h3>Embedding buymeacoffee.com</h3>
-            <p>You can also embed your "Buy me a coffee" button by writing the following:<br><span class="p-1 font-mono text-blue-600 bg-blue-100">{% buymeacoffee BUY_ME_A_COFFEE_USERNAME_HERE %}</span></p>
-            <hr>
-            @endif
-        </div>
-        {{-- End: MarkdownX Help Section --}}
-
     </div>
 
-    <script>
-        const suggestionClasses = 'overflow-scroll';
+    {{-- MarkdownX Editor --}}
+    <div class="relative " x-show="section == 'write'">
+        <div x-ref="error" id="error-{{ $key }}" class="absolute top-0 z-40 hidden w-full py-2 text-sm text-center text-red-400 bg-red-50"></div>
+        <div x-ref="editorModal" x-show="popup" x-ref="popup" x-on:keydown.escape="cancelModal(); popup=false" x-on:click.away="popup=false" wire:ignore :class="{ 'translate-y-2 scale-100 transition-transform duration-100 ease-in-out': popup, 'translate-y-0 scale-95': !popup,  'max-w-sm' : popupType != 'code', 'max-w-4xl pr-10' : popupType == 'code' }" class="absolute z-40 w-full max-w-sm transform rounded-lg shadow-sm" x-cloak>
+            <div class="absolute left-0 w-4 h-4 -mt-2 ml-3.5 transform rotate-45 bg-white border-t border-l border-gray-200 rounded-tl-sm"></div>
+            <div class="overflow-hidden border border-gray-200 rounded-lg">
+                <div class="px-5 py-4 bg-white">
+                    <div x-ref="editorModalContent"></div>
+                </div>
+                <div class="px-5 py-3 bg-gray-100 sm:flex sm:flex-row-reverse">
+                    <span class="flex w-full rounded-md sm:ml-3 sm:w-auto">
+                        <button id="modalClose" @click="cancelModal(); popup = false;" type="button" class="inline-flex justify-center w-full px-4 py-2 mr-2 text-base font-medium leading-6 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline sm:text-sm sm:leading-5">Cancel</button>
+                        <button type="button" x-ref="modalExecute" id="modal-execute-{{ $key }}" @click="executeAssociatedFunction()" data-suggestion="" @click="popup = false" class="inline-flex justify-center w-full px-4 py-2 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-blue-500 border-blue-500 rounded-md shadow-sm text-whit hover:border-blue-600 hover:bg-blue-600 focus:outline-none focus:border-blue-300 focus:shadow-outline sm:text-sm sm:leading-5">Insert</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div id="dropdown-{{ $key }}" x-ref="dropdown" @click="clickItem($event)" wire:ignore class="relative z-40"></div>
+        <div wire:ignore x-show="debug" @click="$refs.editor.focus()" :class="{ 'w-full h-full bg-red-100 bg-opacity-50' : debuggerOpen, 'w-0 h-auto' : !debuggerOpen }" class="absolute z-40 cursor-text" x-cloak>
+            <div x-show="debuggerOpen" x-ref="debugger" class="w-full opacity-75" x-cloak></div>
+            <div x-ref="debugButton" class="relative opacity-0">
+                <div @click="debuggerOpen=!debuggerOpen" :class="{ 'text-gray-400 bg-gray-50 hover:text-gray-500' : !debuggerOpen, 'text-red-400 hover:text-red-500 bg-red-50' : debuggerOpen }" class="absolute top-0 flex items-center justify-center rounded-sm cursor-pointer -ml-9 group w-9 h-9">
+                    <svg x-show="debuggerOpen" class="w-5 h-5 transform rotate-90 stroke-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M0 0h24v24H0z" stroke="none" />
+                        <path d="M9 9V8a3 3 0 016 0v1M8 9h8a6 6 0 011 3v3a5 5 0 01-10 0v-3a6 6 0 011-3M3 13h4M17 13h4M12 20v-6M4 19l3.35-2M20 19l-3.35-2M4 7l3.75 2.4M20 7l-3.75 2.4" />
+                    </svg>
+                    <svg x-show="!debuggerOpen" x-transition:enter-start="rotate-90" x-transition:enter-end="rotate-0" class="w-5 h-5 transition-all duration-500 ease-out transform stroke-current group-hover:rotate-90" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M0 0h24v24H0z" stroke="none" />
+                        <path d="M9 9V8a3 3 0 016 0v1M8 9h8a6 6 0 011 3v3a5 5 0 01-10 0v-3a6 6 0 011-3M3 13h4M17 13h4M12 20v-6M4 19l3.35-2M20 19l-3.35-2M4 7l3.75 2.4M20 7l-3.75 2.4" />
+                    </svg>
+                </div>
+            </div>
+            <div x-show="debuggerOpen" class="fixed bottom-0 right-0 px-3 py-2 bg-red-50">
+                <div class="flex text-sm text-red-500">
+                    <span>Cursor Start:</span>
+                    <span class="mr-2" x-text="currentCaretPos.start"></span>
+                    <span>Cursor End:</span>
+                    <span class="mr-2" x-text="currentCaretPos.end"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative  overflow-hidden @if(isset($style['height'])){{ $style['height'] }}@endif">
+            <div wire:ignore x-ref="placeholder" @click="$refs.editor.focus()" id="placeholder-{{ $key }}" x-show="placeholder" class="absolute z-20 text-gray-400 transition-opacity duration-200 ease-out" x-cloak>Type '/' for commands </div>
+            <textarea x-ref="editor" id="editor-{{ $key }}" data-key="{{ $key }}" class="editors @if(isset($style['textarea'])){{ $style['textarea'] }}@else{{ 'w-full h-full mx-auto min-h-screen px-5 md:px-1 pt-5 font-mono leading-loose tracking-tighter border-0 outline-none focus:outline-none sm:x-0 text-lg text-gray-600' }}@endif" placeholder="" data-loaded="false" name="{{ $name }}" x-on:dragenter="$event.preventDefault(); dropFiles=true" wire:model.lazy="content" x-on:blur="@this.call('update', { content: $event.target.value });" x-on:focus="editorEvent($event)" x-on:keypress="editorEvent($event)" x-on:keydown="getCursorXY(); editorEvent($event)" x-on:keyup="getCursorXY(); editorEvent($event)" x-on:click="editorEvent($event)" x-cloak>
+                    </textarea>
+            <div x-ref="drop" x-show="dropFiles" x-on:dragleave="$event.preventDefault(); dropFiles=false" x-on:dragover="$event.preventDefault();" x-on:drop="$event.preventDefault(); droppingFile($event)" class="absolute inset-0 flex items-center justify-center w-full h-full bg-blue-100 bg-opacity-20" x-cloak>
+                <div class="flex flex-col items-center justify-center w-40 h-32 text-xs text-gray-400 bg-white border-0 border-gray-200 border-dashed rounded-lg">
+                    <svg class="w-12 h-auto mb-3 fill-current" viewBox="0 0 98 97" xmlns="http://www.w3.org/2000/svg">
+                        <g fill-rule="nonzero">
+                            <path d="M63.48.16H2.76a2 2 0 00-2 2v60.73a2 2 0 002 2h23.59a2 2 0 100-4H4.78V4.22h56.66v21.57a2 2 0 104 0V2.17a2 2 0 00-2-2M95.35 89.08A1.91 1.91 0 0093.44 91v1.9h-1.9a1.91 1.91 0 000 3.81h3.81a1.91 1.91 0 001.9-1.9V91a1.91 1.91 0 00-1.9-1.9M77.55 92.88h-6.32a1.91 1.91 0 000 3.81h6.32a1.91 1.91 0 100-3.81M57.24 92.88h-6.32a1.91 1.91 0 100 3.81h6.32a1.91 1.91 0 000-3.81M38.19 92.88h-1.91V91a1.9 1.9 0 00-3.8 0v3.81a1.91 1.91 0 001.9 1.9h3.81a1.91 1.91 0 000-3.81" />
+                            <path d="M34.38 58.58a1.91 1.91 0 001.9-1.9v-6.32a1.9 1.9 0 00-3.8 0v6.32a1.89 1.89 0 001.9 1.9M32.48 77a1.9 1.9 0 003.8 0v-6.33a1.9 1.9 0 00-3.8 0V77zM38.19 31.92h-3.81a1.9 1.9 0 00-1.9 1.9v3.8a1.9 1.9 0 003.8 0v-1.9h1.91a1.91 1.91 0 001.9-1.9 1.89 1.89 0 00-1.9-1.9M57.24 31.92h-6.32a1.9 1.9 0 000 3.8h6.32a1.91 1.91 0 001.9-1.9 1.89 1.89 0 00-1.9-1.9M77.55 31.92h-6.32a1.9 1.9 0 000 3.8h6.32a1.9 1.9 0 000-3.8M95.35 31.92h-3.81a1.9 1.9 0 000 3.8h1.9v1.9a1.91 1.91 0 103.81 0v-3.8a1.91 1.91 0 00-1.9-1.9M95.35 68.74a1.9 1.9 0 00-1.91 1.9V77a1.91 1.91 0 103.81 0v-6.33a1.93 1.93 0 00-1.9-1.93M95.35 48.42a1.91 1.91 0 00-1.91 1.91v6.35a1.91 1.91 0 003.81 0v-6.32a1.93 1.93 0 00-1.9-1.94M81.41 62.81a1.29 1.29 0 01-.89 1.19l-10.33 3.65a3.26 3.26 0 00-2 2L64.57 80a1.29 1.29 0 01-1.23.89 1.34 1.34 0 01-1.26-.89L51.45 52.65a1.28 1.28 0 01.31-1.43 1.3 1.3 0 01.92-.39c.17.001.338.028.5.08l27.39 10.64a1.2 1.2 0 01.84 1.26" />
+                        </g>
+                    </svg>
+                    <span>Drop Files Here</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- MarkdownX Preview Section --}}
+    <div x-show="section == 'preview'" wire:target="updateContentPreview" class="@if(isset($style['preview'])){{ $style['preview'] }}@else{{ 'h-full bg-white min-h-screen relative z-30 px-5 pt-5 prose md:prose-xl lg:prose-2xl max-w-none' }}@endif" x-cloak>
+        {!! $contentPreview !!}
+    </div>
+    {{-- End: MarkdownX Preview Section --}}
+
+    {{-- MarkdownX Help Section --}}
+    <div x-show="section == 'help'" class="@if(isset($style['help'])){{ $style['help'] }}@else{{ 'h-full bg-white min-h-screen px-5 pt-10 relative z-30 prose bg-white dark:bg-dark-900 md:prose-xl lg:prose-lg max-w-none' }}@endif" x-cloak>
+
+        <h2>Markdown Basics</h2>
+        <p>Below you will find some common used markdown syntax. For a deeper dive in Markdown check out this <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet" target="_blank">Cheat Sheet</a></p>
+        <hr>
+
+        <h3>Bold & Italic</h3>
+        <p><span class="mr-2 italic">Italics</span> <span class="p-1">*asterisks*</span><br><span class="mr-2 font-bold">Bold</span> <span class="p-1">**double asterisks**</span></p>
+        <hr>
+
+        <h3>Code</h3>
+        <p><span class="mr-2">Inline Code</span><br><span class="p-1 font-mono text-blue-500 bg-blue-100 rounded-md">`backtick`</span><span class="block mt-2 mr-2">Code Block</span><span class="block p-1 font-mono text-blue-600 bg-blue-100">```<br>Three back ticks and then enter your code blocks here.<br>```</span></p>
+        <hr>
+
+        <h3>Headers</h3>
+        <p># This is a Heading 1<br>## This is a Heading 2<br>### This is a Heading 3<br></p>
+        <hr>
+
+        <h3>Quotes</h3>
+        <blockquote> > type a greater than sign and start typing your quote.</blockquote>
+        <hr>
+
+        <h3>Links</h3>
+        <p>You can add <a href="#_">links</a> by adding text inside of <span class="p-1 font-mono text-blue-600 bg-blue-100">[]</span> and the link inside of <span class="p-1 font-mono text-blue-600 bg-blue-100">()</span>, like so:</p>
+        <div class="p-1 font-mono text-blue-600 bg-blue-100">[link_text](https://google.com)</div>
+        <hr>
+
+        <h3>Lists</h3>
+        <p>To add a numbered list you can simply start with a number and a <span class="p-1 font-mono text-blue-600 bg-blue-100">.</span>, like so:<br><span class="block p-1 pl-5 font-mono text-blue-600 bg-blue-100"> 1. The first item in my list</span></p>
+        <p>For an unordered list, you can add a dash <span class="p-1 font-mono text-blue-600 bg-blue-100">-</span>, like so:<br><span class="block p-1 pl-5 font-mono text-blue-600 bg-blue-100"> - The start of my list</span></p>
+        <hr>
+
+        <h3>Images</h3>
+        <p>You can add images by selecting the image icon, which will upload and add an image to the editor, or you can manually add the image by adding an exclamation <span class="p-1 font-mono text-blue-600 bg-blue-100">!</span>, followed by the alt text inside of <span class="p-1 font-mono text-blue-600 bg-blue-100">[]</span>, and the image URL inside of <span class="p-1 font-mono text-blue-600 bg-blue-100">()</span>, like so:</p>
+        <div class="p-1 font-mono text-blue-600 bg-blue-100">![alt text for image](url_to_image.png)</div>
+        <hr>
+
+        <h3>Dividers</h3>
+        <p>To add a divider you can add three dashes or three asterisks:<br><span class="block p-1 pl-5 font-mono text-blue-600 bg-blue-100">--- or ***</span>
+        </p>
+        <hr>
+
+        @if(in_array('giphy', config('markdownx.dropdown_items')))
+        <h3>Embedding GIFs via Giphy</h3>
+        <p>You can easily embed animated GIFS with the following syntax:<br><span class="p-1 font-mono text-blue-600 bg-blue-100">{% giphy https://giphy.com/embed/giphy_id %}</span></p>
+        <hr>
+        @endif
+
+        @if(in_array('codepen', config('markdownx.dropdown_items')))
+        <h3>Embedding Codepens</h3>
+        <p>You can also embed a codepen by writing the following:<br><span class="p-1 font-mono text-blue-600 bg-blue-100">{% codepen https://codepen.io/your/pen/url %}</span></p>
+        <p>You may also choose the default tabs you wish to show your pen by writing the <span class="p-1 font-mono text-blue-600 bg-blue-100">default-tab</span> like so: (default is result)</p>
+        <p><span class="p-1 font-mono text-blue-600 bg-blue-100">{% codepen https://codepen.io/your/pen/url default-tab=result,html %}</span></p>
+        <hr>
+        @endif
+
+        @if(in_array('codesandbox', config('markdownx.dropdown_items')))
+        <h3>Embedding CodeSandbox</h3>
+        <p>You can also embed CodeSandbox by writing the following:<br><span class="p-1 font-mono text-blue-600 bg-blue-100">{% codesandbox YOUR_CODESANDBOX_EMBED_URL %}</span></p>
+        <hr>
+        @endif
+
+        @if(in_array('gists', config('markdownx.dropdown_items')))
+        <h3>Embedding Gists</h3>
+        <p>You can also embed a Gists by writing the following:<br><span class="p-1 font-mono text-blue-600 bg-blue-100">{% gist GIST_ID_HERE %}</span></p>
+        <hr>
+        @endif
+
+        @if(in_array('youtube', config('markdownx.dropdown_items')))
+        <h3>Embedding YouTube Videos</h3>
+        <p>You can also embed a YouTube video by writing the following:<br><span class="p-1 font-mono text-blue-600 bg-blue-100">{% youtube VIDEO_ID_HERE %}</span></p>
+        <hr>
+        @endif
+
+        @if(in_array('buy_me_a_coffee', config('markdownx.dropdown_items')))
+        <h3>Embedding buymeacoffee.com</h3>
+        <p>You can also embed your "Buy me a coffee" button by writing the following:<br><span class="p-1 font-mono text-blue-600 bg-blue-100">{% buymeacoffee BUY_ME_A_COFFEE_USERNAME_HERE %}</span></p>
+        <hr>
+        @endif
+    </div>
+    {{-- End: MarkdownX Help Section --}}
+
+</div>
+
+<script>
+    const suggestionClasses = 'overflow-scroll';
         const suggestionActiveClasses = 'bg-gray-50 text-white suggestion-active';
         const suggestionItemClasses = 'cursor-pointer hover:bg-gray-50';
 
@@ -1307,5 +1306,4 @@
         };
         /********** END TEXT AREA PROTOTYPES **********/
 
-    </script>
-</div>
+</script>
