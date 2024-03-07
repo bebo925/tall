@@ -52,7 +52,7 @@ class MarkdownX extends Component
     {
         $content = $data['content'];
         $this->content = $content;
-        $this->emitUp('markdown-x:update', $this->content);
+        $this->dispatch('markdown-x:update', $this->content);
     }
 
     /**
@@ -62,7 +62,7 @@ class MarkdownX extends Component
      */
     public function updatedContent()
     {
-        $this->emitUp('markdown-x:update', $this->content);
+        $this->dispatch('markdown-x:update', $this->content);
     }
 
     /**
@@ -212,7 +212,7 @@ class MarkdownX extends Component
             );
         }
 
-        $this->dispatchBrowserEvent('markdown-x-giphy-results', [
+        $this->dispatch('markdown-x-giphy-results', [
             'status' => 200,
             'message' => 'Successfully returned results.',
             'results' => $parse_giphy_results,
