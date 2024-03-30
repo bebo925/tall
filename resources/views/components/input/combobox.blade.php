@@ -19,7 +19,7 @@
 
                 $watch('selected', option => {
                     console.log('selected', option);
-                    $wire.someUser = (@js($multiple))
+                      $wire[this.attributes.value] = (@js($multiple))
                         ?this.selected.map(option => option.id)
                         :this.selected.id;
                     if(this.attributes.directive.includes('.live'))$wire.$refresh();
