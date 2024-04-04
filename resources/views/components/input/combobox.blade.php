@@ -30,7 +30,7 @@
                 this.selected = this.selected.filter((i) => i.id !== option.id)
             }
         }" class="max-w-xs w-full">
-    <div x-combobox x-model="selected" by="id" @if($multiple) multiple @endif class="rounded-lg p-0">
+    <div x-combobox x-model="selected" by="id" @if($multiple) multiple @endif class="rounded-lg p-0 border border-secondary-300" style="min-width:150px">
         <div @class(['relative', 'py-2 pl-2 pr-6'=> $multiple])>
             @if(!$multiple)
             <x-tall::input.text x-combobox:input x-bind:display-value="option => option.name" @change="query = $event.target.value;" placeholder="Search..."></x-tall::input.text>
@@ -49,7 +49,7 @@
                     </template>
                 </div>
 
-                <div x-show="!selected.length" class="text-gray-500 text-sm pl-2">
+                <div x-show="!selected.length" class="text-gray-500 text-sm pl-2 pr-3">
                     {{ $placeholder }}
                 </div>
                 @endif
